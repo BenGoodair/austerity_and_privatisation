@@ -1,30 +1,19 @@
+####Start####
+####load libraries####
+if (!require("pacman")) install.packages("pacman")
 
+pacman::p_load(devtools, dplyr, tidyverse, tidyr, stringr,  curl, RColorBrewer, ggforce, ggarchery)
 
+####data####
+
+df <- read.csv(curl("https://raw.githubusercontent.com/BenGoodair/austerity_and_privatisation/main/Data/main_data.csv"))
+df <- read.csv(curl("https://raw.githubusercontent.com/BenGoodair/austerity_and_privatisation/main/Data/main_data.csv"))
+df <- read.csv(curl("https://raw.githubusercontent.com/BenGoodair/austerity_and_privatisation/main/Data/main_data.csv"))
 
 ####ANALYSIS####
 
 ###dag creation####
 
-# library(dagitty)
-# library(ggdag)
-# 
-# dag <- dagitty("dag{y <- z -> x}")
-# tidy_dagitty(dag)
-# 
-# dagify(
-#   Mortality ~ Austerity + Privatisation,
-#   Privatisation ~ Austerity
-# ) %>%
-#   node_canonical() %>%
-#   ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
-#   geom_dag_point() +
-#   geom_dag_edges_diagonal() +
-#   geom_dag_text() +
-#   theme_dag()+
-#   theme(text=element_text(size=2))
-
-library(ggforce)
-library(ggarchery)
 
 dag <- ggplot()+
   geom_arrowsegment(aes(x = 0, xend = 25, y = 100, yend = 75), arrow_positions = 0.5) + 
@@ -64,13 +53,11 @@ dag <- ggplot()+
   # coord_cartesian(ylim=c(4, 22), xlim=c(-100,30))+
   coord_fixed()+
   theme(panel.background = element_rect(fill = "white"))
-ggsave("plots/paper_3/dagtest.png", plot=dag, width=10, height=10, dpi=600)
+#ggsave("plots/paper_3/dagtest.png", plot=dag, width=10, height=10, dpi=600)
 
 
 
 ####three dags together####
-library(ggforce)
-library(ggarchery)
 
 dag1 <- ggplot()+
   geom_arrowsegment(aes(x = 0, xend = 25, y = 100, yend = 75), arrow_positions = 0.5) + 
@@ -182,83 +169,7 @@ dag3 <- ggplot()+
 bothdags <- cowplot::plot_grid(dag1, dag2, ncol=2)
 bottomdags <- cowplot::plot_grid(NULL, dag3, NULL, ncol=3, rel_widths = c(0.25,0.5,0.25))
 dags <- cowplot::plot_grid(bothdags, bottomdags, ncol=1)
-ggsave("plots/paper_3/dags_both.png", plot=dags, width=20, height=20, dpi=600)
-
-
-
-
-####both dags together####
-dag1 <- ggplot()+
-  geom_arrowsegment(aes(x = 0, xend = 25, y = 100, yend = 75), arrow_positions = 0.5) + 
-  geom_arrowsegment(aes(x = 0, xend = 100, y = 100, yend = 50), arrow_positions = 0.5) + 
-  geom_arrowsegment(aes(x = 0, xend = 25, y = 0, yend = 25), arrow_positions = 0.5) + 
-  geom_arrowsegment(aes(x = 0, xend = 100, y = 0, yend = 50), arrow_positions = 0.5) + 
-  geom_arrowsegment(aes(x = 25, xend = 50, y = 25, yend = 50), arrow_positions = 0.5) + 
-  geom_arrowsegment(aes(x = 25, xend = 50, y = 75, yend = 50), arrow_positions = 0.5) + 
-  geom_arrowsegment(aes(x = 50, xend = 100, y = 50, yend = 50), arrow_positions = 0.5) +
-  geom_circle(aes(x0 = 0, y0 = 100, r = 12),
-              inherit.aes = FALSE, fill="white")+
-  geom_circle(aes(x0 = 0, y0 = 0, r = 12),
-              inherit.aes = FALSE, fill="white")+
-  geom_circle(aes(x0 = 25, y0 = 25, r = 9),
-              inherit.aes = FALSE, fill="white", colour = "white")+
-  geom_circle(aes(x0 = 25, y0 = 75, r = 11),
-              inherit.aes = FALSE, fill="white", colour = "white")+
-  geom_circle(aes(x0 = 50, y0 = 50, r = 12),
-              inherit.aes = FALSE, fill="white")+
-  geom_circle(aes(x0 = 100, y0 = 50, r = 12),
-              inherit.aes = FALSE, fill="white")+
-  annotate("text", label = "Austerity",
-           x = -15, y = 50, size = 9.5, colour = "black", angle = 90)+
-  annotate("text", label = "Restricted\nNHS budget",
-           x = 0, y = 100, size = 4.8, colour = "black")+
-  annotate("text", label = "Cuts to\nsocial services\nand\nbenefit payments",
-           x = 0, y = 0, size = 4.8, colour = "black")+
-  annotate("text", label = "NHS\nPrivatisation",
-           x = 50, y = 50, size = 4.8, colour = "black")+
-  annotate("text", label = "Treatable\nMortality",
-           x = 100, y = 50, size = 4.8, colour = "black")+
-  annotate("text", label = "Pressure for\ncheap services",
-           x = 25, y = 75, size = 4.8, colour = "black", angle=-45)+
-  annotate("text", label = "Greater need",
-           x = 25, y = 25, size = 4.8, colour = "black", angle=45)+
-  theme_void()+
-  # coord_cartesian(ylim=c(4, 22), xlim=c(-100,30))+
-  coord_fixed()+
-  theme(panel.background = element_rect(fill = "white"))+
-  labs(title="Scenario 1")+ theme(plot.title = element_text(size=22))
-
-dag2 <- ggplot()+
-  geom_arrowsegment(aes(x = 0, xend = 100, y = 100, yend = 50), arrow_positions = 0.5) + 
-  geom_arrowsegment(aes(x = 0, xend = 100, y = 0, yend = 50), arrow_positions = 0.5) + 
-  geom_arrowsegment(aes(x = 0, xend = 100, y = 50, yend = 50), arrow_positions = 0.5) +
-  geom_circle(aes(x0 = 0, y0 = 100, r = 12),
-              inherit.aes = FALSE, fill="white")+
-  geom_circle(aes(x0 = 0, y0 = 0, r = 12),
-              inherit.aes = FALSE, fill="white")+
-  geom_circle(aes(x0 = 0, y0 = 50, r = 12),
-              inherit.aes = FALSE, fill="white")+
-  geom_circle(aes(x0 = 100, y0 = 50, r = 12),
-              inherit.aes = FALSE, fill="white")+
-  annotate("text", label = "Conservative State Retrenchment",
-           x = -15, y = 50, size = 8.5, colour = "black", angle = 90)+
-  annotate("text", label = "Restricted\nNHS budget",
-           x = 0, y = 100, size = 4.8, colour = "black")+
-  annotate("text", label = "Cuts to\nsocial services\nand\nbenefit payments",
-           x = 0, y = 0, size = 4.8, colour = "black")+
-  annotate("text", label = "NHS\nPrivatisation",
-           x = 0, y = 50, size = 4.8, colour = "black")+
-  annotate("text", label = "Treatable\nMortality",
-           x = 100, y = 50, size = 4.8, colour = "black")+
-  theme_void()+
-  # coord_cartesian(ylim=c(4, 22), xlim=c(-100,30))+
-  coord_fixed()+
-  theme(panel.background = element_rect(fill = "white"))+
-  labs(title="Scenario 2")+ theme(plot.title = element_text(size=22))
-
-bothdags <- cowplot::plot_grid(dag1, dag2, ncol=2)
-ggsave("plots/paper_3/dags_both.png", plot=bothdags, width=20, height=10, dpi=600)
-
+#ggsave("plots/paper_3/dags_both.png", plot=dags, width=20, height=20, dpi=600)
 
 
 
@@ -364,10 +275,10 @@ c <- ggplot(dfchange[dfchange$profitchange>-10&dfchange$profitchange<100,], aes(
   theme(axis.text.x =element_blank(), legend.position = "none")
 
 
-fig1 <- cowplot::plot_grid(a,c,b,ncol=1, rel_heights = c(0.3,0.3,0.4))
+fig2 <- cowplot::plot_grid(a,c,b,ncol=1, rel_heights = c(0.3,0.3,0.4))
 #fig1 <- cowplot::plot_grid(fig1, x, ncol=2, rel_widths = c(0.8,0.2))
 
-ggsave("plots/paper_3/Figure_2_changes_average.png", plot=fig1, width=10, height=12, dpi=600)
+#ggsave("plots/paper_3/Figure_2_changes_average.png", plot=fig2, width=10, height=12, dpi=600)
 
 ####Regression Table 1####
 
@@ -425,9 +336,9 @@ threesum$tidy$conf.high <- threesum$tidy$estimate+(1.96*coef_test(three, vcov = 
 threesum$tidy$estimate <- threesum$tidy$estimate
 
 
-cm <- c("lag(log(deflated_per_person_allocation))" = "CCG Allocation (? per capita)",
-        "lag(log(deflated_per_person_allocation_la))" = "LA Allocation (? per capita)",
-        "lag(log(deflated_per_person_benefits))" = "Benefit Allocation (? per capita)" )
+cm <- c("lag(log(deflated_per_person_allocation))" = "CCG Allocation (£000s per capita)",
+        "lag(log(deflated_per_person_allocation_la))" = "LA Allocation (£000s per capita)",
+        "lag(log(deflated_per_person_benefits))" = "Benefit Allocation (£000s per capita)" )
 
 rows <- tribble(~term,          ~`For-profit Outsourcing (%) [.95 ci]`,  ~`p-value`,~`For-profit Outsourcing (%) [.95 ci]`,  ~`p-value`,  ~`For-profit Outsourcing (%) [.95 ci]`,  ~`p-value`,
                 'CCG Fixed Effects', 'Yes',  'Yes', 'Yes',  'Yes','Yes',  'Yes',
@@ -445,10 +356,34 @@ table <- modelsummary(list("For-profit Outsourcing (%) [.95 ci]"=onesum,"p-value
                       output = "gt") 
 #add_header_above(c(" ", "Fixed Effects" = 2, "First Differences" = 2, "Covariate Balancing (1)" = 2, "Covariate Balancing (2)" = 2, "Multi-Level Model" = 2))
 
-gtsave(table, "Regressions/paper_3/FE_privatisation_logs.html")
+#gtsave(table, "Regressions/paper_3/FE_privatisation_logs.html")
 
 ####Confounding####
-dfint <- df[which(df$year!=2013),]
+
+pdf <- df %>% dplyr::select(deflated_per_person_benefits,
+                            Treatable_Mortality_Rate,
+                            GDHI_per_person,
+                            Private_Sector_Procurement_Spend,
+                            deflated_per_person_allocation,
+                            deflated_per_person_allocation_la,
+                            CCG_Name,
+                            CCGpop,
+                            total_spend_10millions,
+                            year,
+                            preventable_mortality_rate, 
+                            treatable_mortality_rate)%>%
+  dplyr::distinct()%>%
+  dplyr::filter(!is.na(deflated_per_person_benefits),
+                !is.na(Treatable_Mortality_Rate),
+                !is.na(Private_Sector_Procurement_Spend),
+                !is.na(CCG_Name),
+                !is.na(year),
+                !is.na(treatable_mortality_rate),
+                !is.na(GDHI_per_person),
+                Private_Sector_Procurement_Spend>=0)
+pdf <- plm::pdata.frame(unique(pdf),index=c("CCG_Name", "year") )
+#pdf <- pdf[complete.cases(pdf),]
+dfint <- pdf[which(pdf$year!=2013),]
 
 one <-plm(log(Treatable_Mortality_Rate)~lag(Private_Sector_Procurement_Spend)+total_spend_10millions+GDHI_per_person+CCGpop, data=dfint, index=c("CCG_Name", "year") ,method="within", effect = "twoways")
 two <- plm(log(Treatable_Mortality_Rate)~lag(Private_Sector_Procurement_Spend)+lag(log(deflated_per_person_allocation))+total_spend_10millions+GDHI_per_person+CCGpop, data=dfint, index=c("CCG_Name", "year") ,method="within", effect = "twoways")
