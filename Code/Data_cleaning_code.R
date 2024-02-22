@@ -1883,7 +1883,7 @@ df <- merge(df, commissioner_data, by=c("CCG_Name", "year"), all=T)
 
 rm(list=setdiff(ls(), c("df", "benefits_plot","LA_allocation")))
 
-write.csv(df, "C:/Users/benjamin.goodair/OneDrive - Nexus365/Documents/GitHub/austerity_and_privatisation/Data/main_data.csv")
-write.csv(benefits_plot, "C:/Users/benjamin.goodair/OneDrive - Nexus365/Documents/GitHub/austerity_and_privatisation/Data/socialsecurity_data.csv")
-write.csv(LA_allocation, "C:/Users/benjamin.goodair/OneDrive - Nexus365/Documents/GitHub/austerity_and_privatisation/Data/LA_data.csv")
+#write.csv(df, "C:/Users/benjamin.goodair/OneDrive - Nexus365/Documents/GitHub/austerity_and_privatisation/Data/main_data.csv")
+#write.csv(benefits_plot, "C:/Users/benjamin.goodair/OneDrive - Nexus365/Documents/GitHub/austerity_and_privatisation/Data/socialsecurity_data.csv")
+#write.csv(LA_allocation, "C:/Users/benjamin.goodair/OneDrive - Nexus365/Documents/GitHub/austerity_and_privatisation/Data/LA_data.csv")
 ####ANALYSIS####
