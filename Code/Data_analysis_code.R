@@ -169,7 +169,7 @@ dag3 <- ggplot()+
 bothdags <- cowplot::plot_grid(dag1, dag2, ncol=2)
 bottomdags <- cowplot::plot_grid(NULL, dag3, NULL, ncol=3, rel_widths = c(0.25,0.5,0.25))
 dags <- cowplot::plot_grid(bothdags, bottomdags, ncol=1)
-#ggsave("plots/paper_3/dags_both.png", plot=dags, width=20, height=20, dpi=600)
+ggsave("C:/Users/benjamin.goodair/OneDrive - Nexus365/Documents/GitHub/austerity_and_privatisation/Figures/dags_all.jpeg", plot=dags, width=20, height=20, dpi=600)
 
 
 
@@ -230,7 +230,7 @@ twice <- cowplot::plot_grid(NULL, plot3, NULL ,ncol=3, rel_widths = c(0.4, 1.2, 
 all <- cowplot::plot_grid(once, twice, ncol=1)
 
 
-ggsave("C:/Users/benjamin.goodair/OneDrive - Nexus365/Documents/GitHub/austerity_and_privatisation/Figures/CCG_Austerity_plot_rev.png", plot=all, width=12, height=12, dpi=600)
+ggsave("C:/Users/benjamin.goodair/OneDrive - Nexus365/Documents/GitHub/austerity_and_privatisation/Figures/CCG_Austerity_plot_rev.jpeg", plot=all, width=12, height=12, dpi=600)
 
 
 ####plot 2####
@@ -267,8 +267,8 @@ dfchange <- dfchange %>%dplyr::group_by(CCG_Code, CCG_Name)%>%
 
 a <- ggplot(dfchange[dfchange$profitchange>-10&dfchange$profitchange<100,], aes(x=profitchange, y=ccgchange))+
   geom_point(aes( alpha=0.3))+
-  theme_nice()+
-  labs(title = "NHS Allocation" ,x="", y="Change in CCG Allocation")+
+  theme_bw()+
+  labs(title = "NHS Allocation" ,x="", y="Change in CCG Allocation\n(£000s, per capita)")+
   stat_smooth(method="lm")+
   geom_vline(xintercept = 0, linetype="dashed")+
   geom_hline(yintercept = 0, linetype="dashed")+
@@ -276,10 +276,10 @@ a <- ggplot(dfchange[dfchange$profitchange>-10&dfchange$profitchange<100,], aes(
 
 b <- ggplot(dfchange[dfchange$profitchange>-10&dfchange$profitchange<100,], aes(x=profitchange, y=benschange))+
   geom_point(aes( alpha=0.3))+
-  theme_nice()+
-  labs(title = "Benefit Allocation" ,x="Change in for-profit outsourcing", 
-       y="Change in Benefit Allocation",
-       caption = "Changes in allocations are reported in annual average changes to per capita ?s\nChanges in for-profit outsourcing reported in average annual % point changes\nAll reported for period 2013-2020")+
+  theme_bw()+
+  labs(title = "Benefit Allocation" ,x="Change in for-profit outsourcing\n(% points)", 
+       y="Change in Benefit Allocation\n(£000s, per capita)",
+       caption = "Changes in allocations are reported in annual average changes to per capita £s\nChanges in for-profit outsourcing reported in average annual % point changes\nAll reported for period 2013-2020")+
   stat_smooth(method="lm")+
   geom_vline(xintercept = 0, linetype="dashed")+
   geom_hline(yintercept = 0, linetype="dashed")+
@@ -287,8 +287,8 @@ b <- ggplot(dfchange[dfchange$profitchange>-10&dfchange$profitchange<100,], aes(
 
 c <- ggplot(dfchange[dfchange$profitchange>-10&dfchange$profitchange<100,], aes(x=profitchange, y=lachange))+
   geom_point(aes( alpha=0.3))+
-  theme_nice()+
-  labs(title = "LA Allocation" ,x="", y="Change in LA Allocation")+
+  theme_bw()+
+  labs(title = "LA Allocation" ,x="", y="Change in LA Allocation\n(£000, per capitas)")+
   stat_smooth(method="lm")+
   geom_vline(xintercept = 0, linetype="dashed")+
   geom_hline(yintercept = 0, linetype="dashed")+
@@ -298,7 +298,7 @@ c <- ggplot(dfchange[dfchange$profitchange>-10&dfchange$profitchange<100,], aes(
 fig2 <- cowplot::plot_grid(a,c,b,ncol=1, rel_heights = c(0.3,0.3,0.4))
 #fig1 <- cowplot::plot_grid(fig1, x, ncol=2, rel_widths = c(0.8,0.2))
 
-#ggsave("plots/paper_3/Figure_2_changes_average.png", plot=fig2, width=10, height=12, dpi=600)
+ggsave("C:/Users/benjamin.goodair/OneDrive - Nexus365/Documents/GitHub/austerity_and_privatisation/Figures/figure_2.jpeg", plot=fig2, width=10, height=12, dpi=600)
 
 ####Regression Table 1####
 
@@ -534,7 +534,7 @@ dag <- ggplot()+
   # coord_cartesian(ylim=c(4, 22), xlim=c(-100,30))+
   coord_fixed()+
   theme(panel.background = element_rect(fill = "white"))
-ggsave("plots/paper_3/dag2.png", plot=dag, width=10, height=10, dpi=600)
+ggsave("C:/Users/benjamin.goodair/OneDrive - Nexus365/Documents/GitHub/austerity_and_privatisation/Figures/dag_final.jpeg", plot=dag, width=10, height=10, dpi=600)
 
 
 
