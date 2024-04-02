@@ -169,7 +169,7 @@ dag3 <- ggplot()+
 bothdags <- cowplot::plot_grid(dag1, dag2, ncol=2)
 bottomdags <- cowplot::plot_grid(NULL, dag3, NULL, ncol=3, rel_widths = c(0.25,0.5,0.25))
 dags <- cowplot::plot_grid(bothdags, bottomdags, ncol=1)
-ggsave("C:/Users/benjamin.goodair/OneDrive - Nexus365/Documents/GitHub/austerity_and_privatisation/Figures/dags_all.jpeg", plot=dags, width=20, height=20, dpi=600)
+ggsave("C:/Users/benjamin.goodair/OneDrive - Nexus365/Documents/GitHub/austerity_and_privatisation/Figures/dags_all.jpeg", plot=dags, width=20, height=20, dpi=300)
 
 
 
@@ -230,7 +230,7 @@ twice <- cowplot::plot_grid(NULL, plot3, NULL ,ncol=3, rel_widths = c(0.4, 1.2, 
 all <- cowplot::plot_grid(once, twice, ncol=1)
 
 
-ggsave("C:/Users/benjamin.goodair/OneDrive - Nexus365/Documents/GitHub/austerity_and_privatisation/Figures/CCG_Austerity_plot_rev.jpeg", plot=all, width=12, height=12, dpi=600)
+ggsave("C:/Users/benjamin.goodair/OneDrive - Nexus365/Documents/GitHub/austerity_and_privatisation/Figures/CCG_Austerity_plot_rev.jpeg", plot=all, width=12, height=12, dpi=300)
 
 
 ####plot 2####
@@ -298,7 +298,7 @@ c <- ggplot(dfchange[dfchange$profitchange>-10&dfchange$profitchange<100,], aes(
 fig2 <- cowplot::plot_grid(a,c,b,ncol=1, rel_heights = c(0.3,0.3,0.4))
 #fig1 <- cowplot::plot_grid(fig1, x, ncol=2, rel_widths = c(0.8,0.2))
 
-ggsave("C:/Users/benjamin.goodair/OneDrive - Nexus365/Documents/GitHub/austerity_and_privatisation/Figures/figure_2.jpeg", plot=fig2, width=10, height=12, dpi=600)
+ggsave("C:/Users/benjamin.goodair/OneDrive - Nexus365/Documents/GitHub/austerity_and_privatisation/Figures/figure_2.jpeg", plot=fig2, width=10, height=12, dpi=300)
 
 ####Regression Table 1####
 
