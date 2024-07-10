@@ -80,19 +80,19 @@ dag1 <- ggplot()+
   geom_circle(aes(x0 = 100, y0 = 50, r = 12),
               inherit.aes = FALSE, fill="white")+
   annotate("text", label = "Austerity",
-           x = -15, y = 50, size = 9.5, colour = "black", angle = 90)+
+           x = -15, y = 50, size = 4.5, colour = "black", angle = 90)+
   annotate("text", label = "Restricted\nNHS budget",
-           x = 0, y = 100, size = 4.8, colour = "black")+
-  annotate("text", label = "Cuts to\nsocial services\nand\nbenefit payments",
-           x = 0, y = 0, size = 4.8, colour = "black")+
+           x = 0, y = 100, size = 2.0, colour = "black")+
+  annotate("text", label = "Cuts to\nsocial services\nand\nbenefits",
+           x = 0, y = 0, size = 2.0, colour = "black")+
   annotate("text", label = "NHS\nPrivatisation",
-           x = 50, y = 50, size = 4.8, colour = "black")+
+           x = 50, y = 50, size = 2.0, colour = "black")+
   annotate("text", label = "Treatable\nMortality",
-           x = 100, y = 50, size = 4.8, colour = "black")+
+           x = 100, y = 50, size = 2.0, colour = "black")+
   annotate("text", label = "Pressure for\ncheap services",
-           x = 25, y = 75, size = 4.8, colour = "black", angle=-45)+
+           x = 25, y = 75, size = 2.0, colour = "black", angle=-45)+
   annotate("text", label = "Greater need",
-           x = 25, y = 25, size = 4.8, colour = "black", angle=45)+
+           x = 25, y = 25, size = 2.0, colour = "black", angle=45)+
   theme_void()+
   # coord_cartesian(ylim=c(4, 22), xlim=c(-100,30))+
   coord_fixed()+
@@ -119,19 +119,19 @@ dag2 <- ggplot()+
   geom_circle(aes(x0 = 100, y0 = 50, r = 12),
               inherit.aes = FALSE, fill="white")+
   annotate("text", label = "Austerity",
-           x = -15, y = 50, size = 9.5, colour = "black", angle = 90)+
+           x = -15, y = 50, size = 4.5, colour = "black", angle = 90)+
   annotate("text", label = "Restricted\nNHS budget",
-           x = 0, y = 100, size = 4.8, colour = "black")+
-  annotate("text", label = "Cuts to\nsocial services\nand\nbenefit payments",
-           x = 0, y = 0, size = 4.8, colour = "black")+
+           x = 0, y = 100, size = 2.0, colour = "black")+
+  annotate("text", label = "Cuts to\nsocial services\nand\nbenefits",
+           x = 0, y = 0, size = 2.0, colour = "black")+
   annotate("text", label = "NHS\nPrivatisation",
-           x = 50, y = 50, size = 4.8, colour = "black")+
+           x = 50, y = 50, size = 2.0, colour = "black")+
   annotate("text", label = "Treatable\nMortality",
-           x = 100, y = 50, size = 4.8, colour = "black")+
+           x = 100, y = 50, size = 2.0, colour = "black")+
   annotate("text", label = "Pressure for\ncheap services",
-           x = 25, y = 75, size = 4.8, colour = "black", angle=-45)+
+           x = 25, y = 75, size = 2.0, colour = "black", angle=-45)+
   annotate("text", label = "Greater need",
-           x = 25, y = 25, size = 4.8, colour = "black", angle=45)+
+           x = 25, y = 25, size = 2.0, colour = "black", angle=45)+
   theme_void()+
   # coord_cartesian(ylim=c(4, 22), xlim=c(-100,30))+
   coord_fixed()+
@@ -151,15 +151,15 @@ dag3 <- ggplot()+
   geom_circle(aes(x0 = 100, y0 = 50, r = 12),
               inherit.aes = FALSE, fill="white")+
   annotate("text", label = "Conservative State Retrenchment",
-           x = -15, y = 50, size = 8.5, colour = "black", angle = 90)+
+           x = -15, y = 50, size = 4.0, colour = "black", angle = 90)+
   annotate("text", label = "Restricted\nNHS budget",
-           x = 0, y = 100, size = 4.8, colour = "black")+
-  annotate("text", label = "Cuts to\nsocial services\nand\nbenefit payments",
-           x = 0, y = 0, size = 4.8, colour = "black")+
+           x = 0, y = 100, size = 2.0, colour = "black")+
+  annotate("text", label = "Cuts to\nsocial services\nand\nbenefits",
+           x = 0, y = 0, size = 2.0, colour = "black")+
   annotate("text", label = "NHS\nPrivatisation",
-           x = 0, y = 50, size = 4.8, colour = "black")+
+           x = 0, y = 50, size = 2.0, colour = "black")+
   annotate("text", label = "Treatable\nMortality",
-           x = 100, y = 50, size = 4.8, colour = "black")+
+           x = 100, y = 50, size = 2.0, colour = "black")+
   theme_void()+
   # coord_cartesian(ylim=c(4, 22), xlim=c(-100,30))+
   coord_fixed()+
@@ -169,7 +169,7 @@ dag3 <- ggplot()+
 bothdags <- cowplot::plot_grid(dag1, dag2, ncol=2)
 bottomdags <- cowplot::plot_grid(NULL, dag3, NULL, ncol=3, rel_widths = c(0.25,0.5,0.25))
 dags <- cowplot::plot_grid(bothdags, bottomdags, ncol=1)
-ggsave("C:/Users/benjamin.goodair/OneDrive - Nexus365/Documents/GitHub/austerity_and_privatisation/Figures/dags_all.jpeg", plot=dags, width=20, height=20, dpi=300)
+ggsave("C:/Users/benjamin.goodair/OneDrive - Nexus365/Documents/GitHub/austerity_and_privatisation/Figures/dags_all_fin.jpeg", plot=dags, width=8, height=8, dpi=700)
 
 
 
@@ -288,7 +288,7 @@ b <- ggplot(dfchange[dfchange$profitchange>-10&dfchange$profitchange<100,], aes(
 c <- ggplot(dfchange[dfchange$profitchange>-10&dfchange$profitchange<100,], aes(x=profitchange, y=lachange))+
   geom_point(aes( alpha=0.3))+
   theme_bw()+
-  labs(title = "LA Allocation" ,x="", y="Change in LA Allocation\n(£000, per capitas)")+
+  labs(title = "Local Authority Allocation" ,x="", y="Change in LA Allocation\n(£000, per capitas)")+
   stat_smooth(method="lm")+
   geom_vline(xintercept = 0, linetype="dashed")+
   geom_hline(yintercept = 0, linetype="dashed")+
@@ -524,7 +524,7 @@ dag <- ggplot()+
            x = -15, y = 50, size = 8.5, colour = "black", angle = 90)+
   annotate("text", label = "Restricted\nNHS budget",
            x = 0, y = 100, size = 4.8, colour = "black")+
-  annotate("text", label = "Cuts to\nsocial services\nand\nwelfare payments",
+  annotate("text", label = "Cuts to\nsocial services\nand\nbenefits",
            x = 0, y = 0, size = 4.8, colour = "black")+
   annotate("text", label = "NHS\nPrivatisation",
            x = 0, y = 50, size = 4.8, colour = "black")+
@@ -534,7 +534,7 @@ dag <- ggplot()+
   # coord_cartesian(ylim=c(4, 22), xlim=c(-100,30))+
   coord_fixed()+
   theme(panel.background = element_rect(fill = "white"))
-ggsave("C:/Users/benjamin.goodair/OneDrive - Nexus365/Documents/GitHub/austerity_and_privatisation/Figures/dag_final.jpeg", plot=dag, width=10, height=10, dpi=600)
+ggsave("C:/Users/benjamin.goodair/OneDrive - Nexus365/Documents/GitHub/austerity_and_privatisation/Figures/dag_final.jpeg", plot=dag, width=9, height=9, dpi=600)
 
 
 
